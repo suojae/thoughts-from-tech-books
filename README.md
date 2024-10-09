@@ -2,7 +2,8 @@
 
 <br/>
 
-<img src="https://github.com/ssuojae/thoughts-from-tech-books/tree/main/SICP" width="400">
+<img src="https://github.com/user-attachments/assets/0e8b8e07-552b-4146-984f-14551a76314d" width="200">
+
 
 
 <br/>
@@ -21,7 +22,7 @@
 
 <br/>
 
-<img src="https://github.com/user-attachments/assets/ca0280db-ebc6-482a-ba15-ba699bc0eb59" width="400">
+<img src="https://github.com/user-attachments/assets/ca0280db-ebc6-482a-ba15-ba699bc0eb59" width="200">
 
 
 <br/>
