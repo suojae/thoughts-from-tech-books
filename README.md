@@ -30,4 +30,4 @@
 
 ### 목차
 
-#### [01. Introduction and Essential Concepts](https://github.com/ssuojae/LSP/blob/main/ch1.md)
+#### [01. Introduction and Essential Concepts](https://github.com/ssuojae/book-change-life/blob/main/LSP/01.md)
