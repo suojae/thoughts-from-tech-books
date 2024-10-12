@@ -1,14 +1,23 @@
 
 ## 📚 읽은 책 목록
 
-| 번호 | 주제            | 책 제목                                                                                  | 읽은 기간       |
-|------|-----------------|---------------------------------------------------------------------- |----------------|
-| 1    | 언어 기본 원리   |  Structure and Interpretation of Computer Programs   | 24.08 ~  |
-| 2    | 리눅스 | 리눅스 시스템 프로그래밍                                                    | 24.06~ |
+| 번호          | 책 제목                                                                                  | 읽은 기간       |
+|------|---------------------------------------------------------------------- |----------------|
+| 1       |  Building Event-Driven Microservices   | 24.10 ~  |
+| 2     |  Structure and Interpretation of Computer Programs   | 24.08 ~  |
+| 3    | 리눅스 시스템 프로그래밍                                                    | 24.06~ |
 
 <br/>
 <br/>
 <br/>
+
+## Building Event-Driven Microservices
+
+<img src="https://github.com/user-attachments/assets/ce373db0-6b24-414f-a8fb-a1891dfdec1f" width="200">
+
+<br/>
+
+# 
 
 ## Structure and Interpretation of Computer Programs: JavaScript Edition
 
