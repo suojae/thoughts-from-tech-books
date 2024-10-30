@@ -23,6 +23,7 @@
 #### [1장 리팩터링: 첫 번째 예시 ~ 2장 리팩터링 원칙 ](https://github.com/orgs/frontend-book-study/discussions/1)
 #### [3장 코드에서 나는 악취 ~ 5장 리팩터링 카탈로그 보는 법 ](https://github.com/orgs/frontend-book-study/discussions/3)
 
+#### [6장 기본적인 리팩터링](https://github.com/orgs/frontend-book-study/discussions/4)
 
 <br/>
 <br/>
