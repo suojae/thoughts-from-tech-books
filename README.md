@@ -76,3 +76,22 @@
 # 
 
 #### [01. Introduction and Essential Concepts](https://github.com/ssuojae/book-change-life/blob/main/LSP/01.md)
+
+<br/>
+<br/>
+<br/>
+
+## Designing Data-Intensive Applications - Martin Kleppmann 
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/1f1af63e-af62-4b0a-bb0c-54399a8f8572" width="200">
+
+<br/>
+
+# 
+
+
+#### [01. Reliable, Scalable, and Maintainable Applications](https://github.com/ssuojae/thoughts-from-tech-books/blob/main/data-intensive-app/01.md)
+
+
