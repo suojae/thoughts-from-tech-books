@@ -51,8 +51,7 @@
 
 # 
 
-#### [01. Building Abstraction with Functions](https://github.com/ssuojae/SICP/blob/main/01.md)
-
+#### [01. Building Abstraction with Functions](https://github.com/ssuojae/thoughts-from-tech-books/blob/main/SICP/01.md)
 
 
 <br/>
