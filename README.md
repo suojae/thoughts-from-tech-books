@@ -12,37 +12,6 @@
 <br/>
 <br/>
 
-## Refactoring - Kent Beck and Martin Fowler
-
-<img src="https://github.com/user-attachments/assets/82e0ec1f-f1d1-4238-a8e9-d52bdcc05d1e" width="200">
-
-<br/>
-
-# 
-
-#### [1장 리팩터링: 첫 번째 예시 ~ 2장 리팩터링 원칙 ](https://github.com/orgs/frontend-book-study/discussions/1)
-#### [3장 코드에서 나는 악취 ~ 5장 리팩터링 카탈로그 보는 법 ](https://github.com/orgs/frontend-book-study/discussions/3)
-#### [6장 기본적인 리팩터링](https://github.com/orgs/frontend-book-study/discussions/4)
-
-<br/>
-<br/>
-<br/>
-
-
-
-## Building Event-Driven Microservices
-
-<img src="https://github.com/user-attachments/assets/ce373db0-6b24-414f-a8fb-a1891dfdec1f" width="200">
-
-<br/>
-
-#### [01. Building Event-Driven Microservices](https://github.com/ssuojae/thoughts-from-tech-books/blob/main/EventMSA/01.md)
-
-<br/>
-
-
-# 
-
 ## Structure and Interpretation of Computer Programs: JavaScript Edition
 
 <br/>
@@ -63,6 +32,24 @@
 <br/>
 <br/>
 <br/>
+
+
+## Refactoring - Kent Beck and Martin Fowler
+
+<img src="https://github.com/user-attachments/assets/82e0ec1f-f1d1-4238-a8e9-d52bdcc05d1e" width="200">
+
+<br/>
+
+# 
+
+#### [1장 리팩터링: 첫 번째 예시 ~ 2장 리팩터링 원칙 ](https://github.com/orgs/frontend-book-study/discussions/1)
+#### [3장 코드에서 나는 악취 ~ 5장 리팩터링 카탈로그 보는 법 ](https://github.com/orgs/frontend-book-study/discussions/3)
+#### [6장 기본적인 리팩터링](https://github.com/orgs/frontend-book-study/discussions/4)
+
+<br/>
+<br/>
+<br/>
+
 
 ## 리눅스 시스템 프로그래밍 - 로버트 러브
 
@@ -93,5 +80,25 @@
 
 
 #### [01. Reliable, Scalable, and Maintainable Applications ~ 03. Storage and Retrieval](https://github.com/ssuojae/thoughts-from-tech-books/blob/main/data-intensive-app/01.md)
+
+
+<br/>
+<br/>
+<br/>
+
+
+
+## Building Event-Driven Microservices
+
+<img src="https://github.com/user-attachments/assets/ce373db0-6b24-414f-a8fb-a1891dfdec1f" width="200">
+
+<br/>
+
+#### [01. Building Event-Driven Microservices](https://github.com/ssuojae/thoughts-from-tech-books/blob/main/EventMSA/01.md)
+
+<br/>
+
+
+# 
 
 
