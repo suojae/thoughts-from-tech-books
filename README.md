@@ -36,6 +36,11 @@
 
 <br/>
 
+#### [01. Building Event-Driven Microservices](https://github.com/ssuojae/thoughts-from-tech-books/blob/main/EventMSA/01.md)
+
+<br/>
+
+
 # 
 
 ## Structure and Interpretation of Computer Programs: JavaScript Edition
