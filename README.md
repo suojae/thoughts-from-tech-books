@@ -92,6 +92,6 @@
 # 
 
 
-#### [01. Reliable, Scalable, and Maintainable Applications](https://github.com/ssuojae/thoughts-from-tech-books/blob/main/data-intensive-app/01.md)
+#### [01. Reliable, Scalable, and Maintainable Applications ~ 03. Storage and Retrieval](https://github.com/ssuojae/thoughts-from-tech-books/blob/main/data-intensive-app/01.md)
 
 
