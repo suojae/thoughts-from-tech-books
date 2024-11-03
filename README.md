@@ -50,6 +50,23 @@
 <br/>
 <br/>
 
+## Category Theory for Programmers - Bartosz Milewski
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/22a2f5dd-4979-4dcc-8e68-31b2f1134a0d" width="300">
+
+<br/>
+
+#
+
+#### [01. 카테고리: 합성의 본질 ~ 07. 펑터]()
+
+<br/>
+<br/>
+<br/>
+
+
 
 ## 리눅스 시스템 프로그래밍 - 로버트 러브
 
