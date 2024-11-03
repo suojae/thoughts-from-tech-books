@@ -60,7 +60,7 @@
 
 #
 
-#### [01. 카테고리: 합성의 본질 ~ 07. 펑터]()
+#### [01. 카테고리: 합성의 본질 ~ 07. 펑터](https://github.com/ssuojae/thoughts-from-tech-books/blob/main/category_theory/01~07.md)
 
 <br/>
 <br/>
