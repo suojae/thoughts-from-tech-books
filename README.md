@@ -1,16 +1,15 @@
 
 ## 📚 읽은 책 목록
 
-#### 1. Structure and Interpretation of Computer Programs: JavaScript Edition
-#### 2. Refactoring - Kent Beck and Martin Fowler
-#### 3. Building Event-Driven Microservices
-#### 4. Category Theory for Programmers - Bartosz Milewski
-#### 5. 리눅스 시스템 프로그래밍 - 로버트 러브
-#### 6. Designing Data-Intensive Applications - Martin Kleppmann
-#### 7. Building Event-Driven Microservices
+- [Structure and Interpretation of Computer Programs: JavaScript Edition](#structure-and-interpretation-of-computer-programs-javascript-edition)
+- [Refactoring - Kent Beck and Martin Fowler](#refactoring---kent-beck-and-martin-fowler)
+- [Category Theory for Programmers - Bartosz Milewski](#category-theory-for-programmers---bartosz-milewski)
+- [리눅스 시스템 프로그래밍 - 로버트 러브](#리눅스-시스템-프로그래밍---로버트-러브)
+- [Designing Data-Intensive Applications - Martin Kleppmann](#designing-data-intensive-applications---martin-kleppmann)
+- [Building Event-Driven Microservices](#building-event-driven-microservices)
 
-
-<br/><br/>
+<br/>
+<br/>
 <br/>
 <br/>
 
