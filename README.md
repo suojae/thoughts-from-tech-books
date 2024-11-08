@@ -8,6 +8,7 @@
 - [리눅스 시스템 프로그래밍 - 로버트 러브](#리눅스-시스템-프로그래밍---로버트-러브)
 - [Designing Data-Intensive Applications - Martin Kleppmann](#designing-data-intensive-applications---martin-kleppmann)
 - [Building Event-Driven Microservices](#building-event-driven-microservices)
+- [Unit Testing Principles, Practices, and Pattern](#unit-testing-principles,-practices,-and-pattern---vladimir-khorikov)
 
 <br/>
 <br/>
@@ -53,7 +54,6 @@
 <br/>
 <br/>
 
-
 ## Functional Reactive Programming - Stephen Blackheath
 
 <img src="https://github.com/user-attachments/assets/657bf34b-5474-404b-a600-5891181b5fcc" width="200">
@@ -63,6 +63,22 @@
 #
 
 #### [01. Stop Listening ~ 05. New Concepts]()
+
+<br/>
+<br/>
+<br/>
+
+
+
+## Unit Testing Principles, Practices, and Pattern - Vladimir Khorikov
+
+<img src="https://github.com/user-attachments/assets/cf44f45b-a4c9-472f-b1fb-7b7693526b8b" width="200">
+
+<br/>
+
+#
+
+#### [1. The Goal of unit testing ~ 11. Unit testing anti patterns]()
 
 <br/>
 <br/>
