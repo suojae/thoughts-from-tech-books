@@ -78,7 +78,7 @@
 
 #
 
-#### [1. The Goal of unit testing ~ 11. Unit testing anti patterns]()
+#### [1. The Goal of unit testing ~ 11. Unit testing anti patterns](https://github.com/suojae/thoughts-from-tech-books/tree/main/UnitTesting)
 
 <br/>
 <br/>
