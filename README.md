@@ -9,6 +9,7 @@
 - [Designing Data-Intensive Applications - Martin Kleppmann](#designing-data-intensive-applications---martin-kleppmann)
 - [Building Event-Driven Microservices](#building-event-driven-microservices)
 - [Unit Testing Principles, Practices, and Pattern](#unit-testing-principles,-practices,-and-pattern---vladimir-khorikov)
+- [Effective Typescript -  Dan Vanderkam](#effective-typescript---dan-vanderkam)
 
 <br/>
 <br/>
@@ -53,6 +54,20 @@
 <br/>
 <br/>
 <br/>
+
+## Effective Typescript - Dan Vanderkam
+
+<img src="https://github.com/user-attachments/assets/e5cbf33c-deda-4ebb-9029-763f651bf901" width="200">
+
+#
+
+#### [01. Getting to Know TypeScript]()
+
+<br/>
+<br/>
+<br/>
+
+
 
 ## Functional Reactive Programming - Stephen Blackheath
 
