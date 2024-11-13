@@ -50,6 +50,7 @@
 #### [3장 코드에서 나는 악취 ~ 5장 리팩터링 카탈로그 보는 법 ](https://github.com/orgs/frontend-book-study/discussions/3)
 #### [6장 기본적인 리팩터링](https://github.com/orgs/frontend-book-study/discussions/4)
 #### [7장 캡슐화](https://github.com/orgs/frontend-book-study/discussions/9)
+#### [8장 기능이동](https://github.com/orgs/frontend-book-study/discussions/10)[(+실습)](https://github.com/orgs/frontend-book-study/discussions/11)
 
 <br/>
 <br/>
