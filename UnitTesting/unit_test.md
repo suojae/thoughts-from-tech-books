@@ -71,3 +71,98 @@
 
 ### Chapter 2. What is a unit test? 주요 문장
 
+>A test double is an object that looks and behaves like its release-intended counterpart but is actually a simplified version that reduces the complexity and facilitates testing
+
+ <br/>
+
+<img src="https://github.com/user-attachments/assets/03b3cd11-26d0-4e7e-80eb-b00d6567ec58" width="200">
+
+ <br/>
+
+>A unit test is an automated test that
+>Verifies a small piece of code (also known as a unit),
+>Does it quickly,
+>And does it in an isolated manner.
+
+<br/>
+
+>One benefit of this approach is that if the test fails, you know for sure which part of the code base is broken: it’s the system under test. There could be no other suspects, because all of the class’s neighbors are replaced with the test doubles.
+
+<br/>
+
+>For now, just make a note that interfaces are required for isolating the system under test from its collaborators.
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/37fd40b4-7de9-4ffd-a8c7-da807710414a" width="300">
+
+<br/>
+
+>Another benefit is the ability to split the object graph—the web of communicating classes solving the same problem.
+
+<br/>
+
+>Unit tests themselves should be run in isolation from each other. That way, you can run the tests in parallel, sequentially, and in any order, whatever fits you best, and they still won’t affect each other’s outcome.
+
+<br/>
+
+>For now, just make a note that interfaces are required for isolating the system under test from its collaborators.
+
+<br/>
+
+>Tests shouldn’t verify units of code. Rather, they should verify units of behavior: something that is meaningful for the problem domain and, ideally, something that a business person can recognize as useful.
+
+<br/>
+
+>A test should tell a story about the problem your code helps to solve, and this story should be cohesive and meaningful to a non-programmer.
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/d911f83d-001e-49a5-8bfc-8ad2f4c8e9b9" width="300">
+
+<br/>
+
+>In short, an integration test is a test that verifies that your code works in integration with shared dependencies, out-of-process dependencies, or code developed by other teams in the organization
+
+<br/>
+
+>You may possibly even run them only on the build server, not on individual developers’ machines.
+
+<br/>
+<br/>
+
+### Chapter 2. What is a unit test? 읽고 나의 생각
+
+이책을 읽기 전까지 사실 단위테스트를 작성할 때 기계적으로 mock객체를 만들었다. 하지만 내가 만든 mock은 정확히 얘기하자면 Test Double의 한 종류이다. 왜 단위테스트를 할 때는 테스트 더블(대역)이 필요한걸까? 저자는 두가지 요소를 이야기하는데 바로 객체의 순수한 행동검증과 속도이다.
+
+<br/>
+
+함수형 프로그래밍이 대세라고는 하지만 거의 99%의 소프트웨어는 객체지향 프로그래밍을 하고 있고 객체지향의 핵심은 각 객체들의 행동을 통해 소프트웨어를 만드는 것이다. 이때 어떤 객체들은 그 자체로 독립적으로 존재하지 못하고 의존성이 걸려있는데 만약 "대역"없이 해당 객체를 검증한다면 의존성이 걸려있는 객체가 문제인건지 정말 해당 객체의 문제인지 분별하기가 어려울 것이다. 따라서 해당 객체의 동작을 검증하기위해서는 의존성이 있는 객체들의 대역을 만들게 되고 이러한 대역을 만들기 위해 의존성 걸려있는 객체의 인터페이스를 이용한다.
+
+<br/> 
+
+앞서 언급한 것처럼 속도면에서도 대역이 필요하다. 만약 I/O작업을 하게 될 경우 필연적으로 검증하는데 시간이 지체될 것이다. I/O 작업 클래스 대역을 만들어 놓으면 객체를 1번 테스트할 시간에 여러번 할 수 있을 것이다.
+
+ <br/>
+
+이번 챕터에서 가장 인상적인 문구는 유닛테스트는 코드조각을 테스트하는 것이 아니라 유의미한 행동을 테스트하는 것이다.라는 부분이었다. 유닛테스트를 작성한다는 것은 어떤 문제에 대한 단위 행동을 테스트하는 것이고 이러한 스토리가 없을 때는 테스트 작성을 다시 한 번 고려해보아야한다. 이런 관점에서 비즈니스 로직은 반드시 유닛테스트가 작성되어야함을 알 수 있었다.
+
+ <br/>
+
+챕터 말미에는 통합테스트에 대한 언급도 조금 나왔는데 통합테스트는 시간이 오래걸리기 때문에 유닛테스트를 빌드할 때마다 돌리는 등 자주 돌리는 사이클에 넣는다면 통합테스트는 푸시할 때 한 번 등 마지막에 적은 횟수로 테스트하는 것이 효율적임을 알 수 있었다.
+
+
+<br/>
+<br/>
+<br/>
+
+#
+
+### Chapter 3. The anatomy of a unit test 주요 문장
+
+
+
+
+
+
+
