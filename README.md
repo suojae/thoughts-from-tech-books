@@ -51,6 +51,8 @@
 #### [6장 기본적인 리팩터링](https://github.com/orgs/frontend-book-study/discussions/4)
 #### [7장 캡슐화](https://github.com/orgs/frontend-book-study/discussions/9)
 #### [8장 기능이동](https://github.com/orgs/frontend-book-study/discussions/10)[(+실습)](https://github.com/orgs/frontend-book-study/discussions/11)
+#### [9장 데이터 조작화](https://github.com/orgs/frontend-book-study/discussions/13)
+#### [10장 조건부 로직 간소화](https://github.com/orgs/frontend-book-study/discussions/16)
 
 <br/>
 <br/>
