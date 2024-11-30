@@ -80,7 +80,7 @@
 
 #
 
-#### [01. Stop Listening ~ 05. New Concepts]()
+#### [01. Stop Listening ~ 05. New Concepts](https://github.com/suojae/thoughts-from-tech-books/blob/main/FRP/frp.md)
 
 <br/>
 <br/>
