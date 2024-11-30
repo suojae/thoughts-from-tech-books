@@ -1,4 +1,3 @@
-
 <img src="https://github.com/user-attachments/assets/3c4aca3b-8b9d-4151-b383-374fe1d53058" width="300">
 
 <br/>
@@ -161,8 +160,236 @@
 ### Chapter 3. The anatomy of a unit test 주요 문장
 
 
+We start by thinking about the objective: what a particular behavior should to do for us. The actual solving of the problem comes after that
+
+ <br/>
+
+>Two popular patterns can help you reuse the code in the arrange sections: Object Mother and Test Data Builder
 
 
+<img src="https://github.com/user-attachments/assets/5fb1d50d-f361-4ee2-a5fb-b130fd8f2a6f" width="300">
+
+<br/>
+
+A typical application exhibits multiple behaviors. The greater the complexity of the behavior, the more facts are required to fully describe it. Each fact is represented by a test. Similar facts can be grouped into a single test method using parameterized tests.
+
+
+<br/>
+<br/>
+
+### Chapter 3. The anatomy of a unit test 읽고 나의 생각
+
+테스트 작성에 대한 구체적인 방식을 소개하는 챕터였다. 새롭게 알게된 점은
+
+
+1. Given이 When, Then 의 코드를 합친만큼의 크기를 가진다.
+2. Given에는 대표적으로 Object mother 와 Test Datqa Builder 가 들어간다.
+3. 하나의 행동에는 여러가지 상황을 테스트해야할 수 있는데 이때는 파라미터에 여러가지 상황을 넣어 테스트한다.
+
+```dart
+import 'package:flutter_test/flutter_test.dart';
+
+void main() {
+  final delivery = Delivery();
+
+  group('Delivery date validation', () {
+    final today = DateTime.now();
+
+    final testCases = {
+      'Past Date': today.subtract(Duration(days: 1)),
+      'Today': today,
+      'Tomorrow': today.add(Duration(days: 1)),
+      'Day After Tomorrow': today.add(Duration(days: 2)),
+    };
+
+    testCases.forEach((description, date) {
+      test('$description: Delivery allowed', () {
+        final result = delivery.isDeliveryAllowed(date);
+        if (description == 'Day After Tomorrow') {
+          expect(result, true);
+        } else {
+          expect(result, false);
+        }
+      });
+    });
+  });
+}
+```
+
+<br/>
+<br/>
+<br/>
+
+#
+
+### Chapter 4. The four pillars of a good unit test  주요 문장
+
+>It is integrated into the development cycle. It targets only the most important parts of your code base. It provides maximum value with minimum maintenance costs. You become confident that your code changes won’t lead to regressions
+
+<img src="https://github.com/user-attachments/assets/8cb381ee-c9cf-4033-ae66-18713a2c4071" width="300">
+
+>It aligns itself with the business needs by verifying the only outcome meaningful to end users
+
+<img src="https://github.com/user-attachments/assets/a6bf8296-576c-4000-bc2f-e7e31cbd31cc" width="300">
+
+<br/>
+
+>False positives (false alarms) don’t have as much of a negative effect in the beginning. But they become increasingly important as the project grows—as important as false negatives (unnoticed bugs).
+
+<br/>
+
+>Unfortunately, it’s impossible to create such an ideal test. The reason is that the first three attributes—protection against regressions, resistance to refactoring, and fast feedback—are mutually exclusive. It’s impossible to maximize them all: you have to sacrifice one of the three in order to max out the remaining two
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/17749084-1189-4f40-b919-316211d9a7b3" width="300">
+
+
+<br/>
+
+>In reality, though, resistance to refactoring is non-negotiable. You should aim at gaining as much of it as you can, provided that your tests remain reasonably quick and you don’t resort to the exclusive use of end-to-end tests.
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/41892e3f-5d0f-4836-b668-42e0ceadd90d" width="300">
+
+<br/>
+
+>The trade-off comes down to the choice between protection against regressions and fast feedback.
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/75a312b8-7d3a-4ab0-8397-e4bf5d9e1b52" width="300">
+
+>Therefore, choose black-box testing over white-box testing by default. Make all tests—be they unit, integration, or end-to-end—view the system as a black box and verify behavior meaningful to the problem domain.
+
+
+<br/>
+<br/>
+
+### Chapter 4. The four pillars of a good unit test  읽고 나의 생각
+
+좋은 단위테스트 원칙은 해당 코드에 수정이 들어가도 테스트 코드는 바뀌지 말아야한다는 것으로 요약할 수 있다. 즉 좋은 단위테스트는 핵심적인 주요 로직을 테스트하는 코드로 작성되어야만한다.
+
+ <br/>
+
+특히 한 SUT에 대한 테스트 코드를 작성함에 있어 private 메서드는 단위 테스트 작성을 하지 않아도 된다고 느꼈는데 public한 메서드는 다른 클라이언트 객체와 소통하기 때문에 단위테스트를 작성하지만 SUT의 내부로직을 담고 있는 프라이빗 메서드에 대한 단위테스트를 작성하면 코드 변경에 취약하게 되기 때문이다.
+
+ <br/>
+
+테스트 코드 작성할 때 무엇을 고려해주는지도 배울 수 있었다. 먼저 포기할 수 없는 가치는 리팩토링에 유여한 테스트를 작성해야한다는 것이다. 선택사항으로는 두가지, 회귀(기능 추가, 삭제)와 빠른 피드백 사이에서 트레이드 오프를 해야하는데, 다시말해 짧은 짧은 단위테스트를 작성할 수록 테스트는 빨리빨리 돌릴 수 있지만 작은 기능 수정에도 테스트를 수정해야할 일이 생기며, 만약 end to end test같이 테스트 단위가 길어지면 작은 기능 수정에 있어서 테스트를 고치지 않아도 되지만 테스트 코드를 돌리는 시간이 길어진다. 개발함에 있어 이 두가지 요소를 고려해가며 적절한 타협점을 찾아야함을 알 수 있었다.
+
+<Br/>
+
+**그리고 마지막으로 언급한 중요한 점! 테스트 코드는 블랙박스 테스팅이 되어야 리팩토링에 유연해진다.**
+
+<br/>
+<br/>
+<br/>
+
+#
+
+### Chapter 5. Mocks and test fragility 주요 문장
+
+
+>A test double is an overarching term that describes all kinds of non-production-ready, fake dependencies in tests.
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/9c857d2c-520a-43ec-8362-6dd95e781414" width="300">
+
+<br/>
+
+>Mocks help to emulate and examine outcoming interactions. These interactions are calls the SUT makes to its dependencies to change their state.
+
+<br/>
+
+>Stubs help to emulate incoming interactions. These interactions are calls the SUT makes to its dependencies to get input data.
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/a0328a64-579a-42b7-ba04-1532e2834acd" width="300">
+
+<br/>
+
+>Asserting interactions with stubs is a common anti-pattern that leads to fragile tests.
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/7e089e15-bf14-48de-8770-d8f6c266e9c3" width="300">
+
+>commands correspond to mocks, while queries are consistent with stubs.
+
+<br/>
+
+💡 용어정리<br/>
+- Command: 시스템의 상태를 변경하는 메서드. 보통 반환 값이 없고(void 반환) 외부나 시스템 내부의 상태를 변화. 예를 들어, 데이터베이스에 값을 저장하거나 이메일을 전송하는 등의 작업
+
+- Query: 시스템의 상태를 조회하는 메서드. 외부 상태를 변경하지 않으며, 단순히 데이터를 반환. 예를 들어, 데이터베이스에서 값을 조회하거나 객체의 속성을 반환하는 작업
+
+<br/>
+
+> In other words, tests must focus on the whats, not the hows. All production code can be categorized along two dimensions: Public API vs. private API (where API means application programming interface), Observable behavior vs. implementation details
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/f55f48a1-c067-472f-8639-01d5aecce584" width="300">
+
+<br/>
+
+>In a well-designed API, the observable behavior coincides with the public API, while all implementation details are hidden behind the private API.
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/709e58d3-301f-44a7-8470-8c1cb59547ae" width="300">
+
+<br/>
+
+>The API of User is not well-designed: it exposes the NormalizeName method, which is not part of the observable behavior.
+
+<br/>
+
+>Encapsulation is the act of protecting your code against inconsistencies, also known as invariant violations.
+
+<br/>
+
+>Exposing implementation details goes hand in hand with invariant violations
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/b3a3c5d0-3456-4485-97f6-3f1720b8bc3d" width="300">
+
+<br/>
+
+>Tests working with different layers have a fractal nature: they verify the same behavior at different levels. 
+
+<br/>
+
+>The use of mocks for out-of-process dependencies that you have a full control over also leads to brittle tests
+
+<br/>
+<br/>
+
+### Chapter 5. Mocks and test fragility 나의 생각
+
+대표적인 TestDouble 인 mock과 stub에 대해서 설명해주며 챕터가 시작되었다. mock과 stub의 차이는 interaction의 유무였다. 무엇보다 내가  지금까지 stub을 써왔는데 mock이라고 명명했다는 것을 알 수 있는 챕터였다.🥹 기억하자 mock은 행위검증, stub은 데이터 반환할 때 쓴다!! 따라서 stub을 쓸 때 주의사항은 사이드 이펙트가 있어서는 안된다.
+
+<br/>
+
+
+좋은 테스트 코드를 작성하기 위헤서는 좋은 원본 코드가 있어야한다. 코드는 크게 외부에 노출될 행동과 내부 구현체 메서드로 나뉘는데 이때 외부에 노출될 메서드의 네이밍이 상당히 중요하다는 점을 알 수 있었다. 다른건 몰라도 외부 노출 메서드는 이름만으로 이녀석이 어떤역할을 하는지 알 수 있어야한다.
+
+<br/> 
+
+왜 내부 구현체 메서드를 노출시키면 안되는지도 원리를 설명해주고 있었다. 결국 좋은 코드란 캡슐화가 잘된 객체들이고 이 캡슐화의 목적은 각 객체가 "예측가능하게" 움직여 서로 의사소통하는 것이다. 이러한 이때 내부구현체가 노출되는 순간 사이드이펙트에 노출되며 해당 객체는 더이상 "예측 가능하다"고 볼 수 없다. 예측가능하지 못한 객체들이 쌓이기 시작하면 코드의 복잡성은 기하급수적으로 증가한다.
+
+<br/>
+
+노출된 퍼블릭 메서드는 상위(ui)계층에서 하위(data)계층으로 내려가면서 비즈니스 로직의 세분화가 된다. 이렇게 함으로써 퍼브릭 메서드들이 일종의 프랙탈 구조를 만든다고 책에서 설명하고 있었다.
+
+<br/>
+
+이번 챕터에서 무엇보다 가장 인상깊은 문장은 "테스트는 무얼 하느냐(what)에 집중해야지 어떻게 하느냐(how)에 집중해서는 안된다"였다.
 
 
 
