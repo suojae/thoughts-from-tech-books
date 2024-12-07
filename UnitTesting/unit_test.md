@@ -392,4 +392,195 @@ void main() {
 이번 챕터에서 무엇보다 가장 인상깊은 문장은 "테스트는 무얼 하느냐(what)에 집중해야지 어떻게 하느냐(how)에 집중해서는 안된다"였다.
 
 
+<br/>
+<br/>
+<br/>
+
+#
+
+### Chapter 6. Styles of unit testing 주요 문장
+
+Unfortunately, you can’t use the output-based testing style everywhere. It’s only applicable to code written in a purely functional way. 
+
+ <br/>
+ 
+>there are three styles of unit testing: Output-based testing, State-based testing, Communication-based testing
+
+<img src="https://github.com/user-attachments/assets/458d76ff-7dcc-440d-b4e4-e1a69f64369a" width="300">
+
+
+<br/>
+
+>In output-based testing, tests verify the output the system generates. This style of testing assumes there are no side effects and the only result of the SUT’s work is the value it returns to the caller.
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/eb247ad1-f5b5-4d2c-869e-dbb40208e237" width="300">
+
+<br/>
+
+>In state-based testing, tests verify the final state of the system after an operation is complete. The dashed circles represent that final state.
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/69c43885-fd99-466f-ab8d-3f957d3a37a6" width="300">
+
+<br/>
+
+>  In communication-based testing, tests substitute the SUT’s collaborators with mocks and verify that the SUT calls those collaborators correctly.
+
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/115060b6-c0da-4b7c-a891-f9f1ad8ecd69" width="300">
+
+<br/>
+
+>Output-based testing shows the best results. This style produces tests that rarely couple to implementation details and thus don’t require much due diligence to maintain proper resistance to refactoring. 
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/ad35b3de-866c-48cc-8d36-3f81ba807c50" width="300">
+
+<br/>
+
+>Explicit inputs and outputs make mathematical functions extremely testable because the resulting tests are short, simple, and easy to understand and maintain.
+
+ 
+<Br/>
+
+>The goal of functional programming is not to eliminate side effects altogether but rather to introduce a separation between code that handles business logic and code that incurs side effects
+
+
+<Br/>
+
+<img src="https://github.com/user-attachments/assets/836958e0-62b6-4d8a-86ab-f00e64a99567" width="300">
+
+
+<br/>
+
+>Tests can mock the filesystem and capture the writes the audit system makes to the files
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/7063025d-a313-4793-a94d-961205e3045f" width="300">
+
+<Br/>
+
+>Persister and AuditManager form the functional architecture. Persister gathers files and their contents from the working directory, feeds them to AuditManager, and then converts the return value into changes in the filesystem.
+
+ 
+<br/>
+
+<img src="https://github.com/user-attachments/assets/7f9263e0-7433-4824-a797-836116a59f00" width="300">
+
+<br/>
+
+>ApplicationService glues the functional core (AuditManager) and the mutable shell (Persister) together and provides an entry point for external clients.
+
+
+<br/>
+<br/>
+
+### Chapter 6. Styles of unit testing 나의 생각
+
+테스트하기 이상적인 환경은 원본 코드가 순수함수로만 작성되어 완벽하게 함수형 코딩으로 작성되어있는 상황일 것이다. 이렇게되면 단순히 인터페이스 퍼블릭 메서드의 아웃풋만 검사하면 사이드 이펙트 걱정이 없기 때문에 빈틈없이 테스트를 작성할 수 있기 때문이다. 하지만 현실은 멀티 패러다임이 적용되고 있다. 절차형으로 작성된 코드를 검증해야할 때도 많기 때문에 오직 output-based 테스팅만으로는 모든 테스트 유형을 만족시킬 수 없다.
+
+<br/> 
+
+테스트 유형에는 output based, state based, communication based 3가지가 있지만 최대한 output based 테스트를 지향해야하며 이를 위해서는 원본 코드를 될 수 있으면 함수형으로 작성해야한다. 
+
+ <br/>
+
+테스트 하는 대상은 크게 value와 collaborator로 나눌 수 있다. 전자는 불변(immutable)하고, 변경되지 않는 데이터이고 후자는 변경 가능한 상태를 가질 수 있거나, 외부 시스템과 상호작용하는 객체이다. 두 대상을 테스트할 때 value는 output-based로 (그러기 위해서는 함수형 코드 작성도 필수) collaborator는 state-based 또는 communication-based testing이 필요함을 알 수 있었다.
+
+ <br/>
+
+이부분을 읽으면서 백엔드와 소통하는 맨 뒷단은 mock을 만들어 커뮤니케이션 베이스 테스트를 작성하고 뷰모델에 있는 상태나 레포지토리에 있는 캐시는 상태 베이스 테스트, 나머지는 모두 인터페이스에 함수형을 두어 output based 테스트를 작성하는 것이 가장 바람직한 방법이라고 생각되었다. (솔직히 커뮤니케이션 테스트는 해야할 이유를 못느꼈다. 수정에 취약하고 만약 외부와 상호작용을 테스트하려면 mock만들 시간에 차라리 통합테스트를 작성하는게 더 낫지 않나 라는 생각이 들었기 때문이다.)
+
+
+<br/>
+<br/>
+<br/>
+
+#
+
+### Chapter 7. Refactoring toward valuable unit tests 주요 문장
+
+>Test and production code are intrinsically connected.
+
+ <br/>
+
+> Normally, all code in the domain layer has a direct connection to the end users’ goals and thus exhibits a high domain significance. On the other hand, utility code doesn’t have such a connection.
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/a8d2a7c9-5390-4e4e-b025-22f333bd9c89" width="300">
+
+<br/>
+
+>The four types of code, categorized by code complexity and domain significance (the vertical axis) and the number of collaborators (the horizontal axis).
+
+<br/>
+
+>To split overcomplicated code, you need to use the Humble Object design pattern.
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/be3676b4-6d39-46d5-a439-3b370464dc5d" width="300">
+
+<br/>
+
+>The Humble Object pattern extracts the logic out of the overcomplicated code, making that code so humble that it doesn’t need to be tested. The extracted logic is moved into another class, decoupled from the hard-to-test dependency.
+
+<br/>
+
+
+<img src="https://github.com/user-attachments/assets/3f373c03-b6ca-445c-a780-883a5b5d7292" width="300">
+
+<br/>
+
+>The functional core in a functional architecture and the domain layer in a hexagonal architecture reside in the top-left quadrant
+
+<Br/>
+
+<img src="https://github.com/user-attachments/assets/bf730574-1741-402e-a565-bdbd2ce91012" width="300">
+
+<br/>
+
+>Note that improved testability is not the only reason to maintain the separation between business logic and orchestration. Such a separation also helps tackle code complexity, which is crucial for project growth, too, especially in the long run.
+
+
+<Br/>
+
+<img src="https://github.com/user-attachments/assets/9c702ef2-53d2-4f2e-84e2-24e84d574cc2" width="300">
+
+<br/>
+
+>The separation between business logic and orchestration works best when a business operation has three distinct stages
+
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/8301c15b-b2dc-4c43-939f-eebe927a23d3" width="300">
+
+<br/>
+
+>controller simplicity, domain model testability, and performance. You have to choose two out of the three.
+
+<br/>
+<br/>
+
+### Chapter 7. Refactoring toward valuable unit tests 나의 생각
+
+테스트 코드와 프로덕션 코드는 서로 상호보완 관계에 있다. 이 책을 읽기 전까지는 테스트 코드는 반드시 프로덕션 코드에 부차적인 것이지, 절대 테스트 코드 작성을 위해 프로덕션 코드에 수정을 가해서는 안된다라는 생각이 있었다. 하지만 좋은 테스트 코드 작성을 위한 프로덕션 코드 리팩토링은 전체 코드 품질 향상에 기여할 수 있다는 점을 알 수 있었다. 구체적으로 책에서는 collaborator들이 많은 도메인 로직을 controller와 순수 도메인 로직으로 분리하는 리팩토링을 권하고 있다.
+
+ <br/>
+ 
+
+특히 이번챕터를 통해 모바일 프레젠테이션 레이어 패턴으로 자주 사용되는 MVC/MVP 가 humble object 패턴으로부터 비롯된 것임을 알 수 있었다. 결국 자주 변하는 것과 변하지 않는 것을 분리하고 변하지 않는 것은 최대한 "함수형"으로 작성함으로써 테스트에 더 적합한 코드를 작성할 수 있다.
+
+
+
+
 
