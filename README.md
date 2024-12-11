@@ -54,7 +54,7 @@
 #### [9장 데이터 조작화](https://github.com/orgs/frontend-book-study/discussions/13)
 #### [10장 조건부 로직 간소화](https://github.com/orgs/frontend-book-study/discussions/16)
 
-#### [회고](https://github.com/orgs/frontend-book-study/discussions/20)
+#### [서평 및 회고](https://github.com/orgs/frontend-book-study/discussions/19)
 
 <br/>
 <br/>
