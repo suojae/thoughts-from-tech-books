@@ -166,11 +166,26 @@
 
 <br/>
 
+#
+
 #### [01. Building Event-Driven Microservices](https://github.com/ssuojae/thoughts-from-tech-books/blob/main/EventMSA/01.md)
 
 <br/>
 
 
-# 
+<br/>
+<br/>
+<br/>
+
+
+
+## Kubernetes: Up and Running, 3rd Edition
+
+<img src="https://github.com/user-attachments/assets/2ad5a578-c813-49ed-8f9b-603cb0a0a821" width="200">
+
+<br/>
+
+#
+
 
 
