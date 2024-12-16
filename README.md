@@ -191,9 +191,10 @@
 <br/>
 <br/>
 
-## NestJS Docs
+## Docker in Action, Second Edition
 
-<img src="https://github.com/user-attachments/assets/ed5b2f2b-b69c-4553-95c0-f6c7c5eedc94" width="200">
+<img src="https://github.com/user-attachments/assets/e29bee8c-ab3d-4fbe-a255-601058e684d5" width="200">
+
 
 <br/>
 
