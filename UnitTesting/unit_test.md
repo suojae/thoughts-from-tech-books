@@ -1,4 +1,3 @@
-<img src="https://github.com/user-attachments/assets/3c4aca3b-8b9d-4151-b383-374fe1d53058" width="300">
 
 <br/>
 <br/>
@@ -636,7 +635,16 @@ Unfortunately, you can’t use the output-based testing style everywhere. It’s
 
  <br/>
 
+ <img src="https://github.com/user-attachments/assets/251d0987-3469-4ee4-b66c-d67f4d2b9529" width="300">
+
+<br/>
+
 >Treat the part of the database that is visible to external applications as an unmanaged dependency. Replace it with mocks in integration tests. Treat the rest of the database as a managed dependency. Verify its final state, not interactions with it.
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/6127cf6b-f538-4c5b-aa45-ded4363806c6" width="300">
+<img src="https://github.com/user-attachments/assets/682a6bb1-1c57-4f6a-8808-d53c04e963dd" width="300">
 
 <br/>
 
@@ -646,36 +654,45 @@ Unfortunately, you can’t use the output-based testing style everywhere. It’s
 
 >One of the most misunderstood subjects in the sphere of unit testing is the use of interfaces. Developers often ascribe invalid reasons to why they introduce interfaces and, as a result, tend to overuse them.
 
- 
+ <br/>
 
 Abstract out-of-process dependencies, thus achieving loose coupling
 Add new functionality without changing the existing code, thus adhering to the Open-Closed principle (OCP)
 Both of these reasons are misconceptions. Interfaces with a single implementation are not abstractions and don’t provide loose coupling any more than concrete classes that implement those interfaces
 
- 
+ <br/>
 
 Genuine abstractions are discovered, not invented. The discovery, by definition, takes place post factum, when the abstraction already exists but is not yet clearly defined in the code
 
- 
+<br/>
 
 So, why use interfaces for out-of-process dependencies at all, assuming that each of those interfaces has only one implementation? The real reason is much more practical and down-to-earth. It’s to enable mocking—as simple as that. 
 
- 
+<br/>
 
 You only mock out unmanaged dependencies, so the guideline can be boiled down to this: use interfaces for unmanaged dependencies only. 
 
+<br/>
  
 
 Circular dependencies also interfere with testing. You often have to resort to interfaces and mocking in order to split the class graph and isolate a single unit of behavior, which, again, is a no-go when it comes to testing the domain model
 
- 
 
+<br/>
 
- 
+<img src="https://github.com/user-attachments/assets/3201adc3-4022-4997-9f7e-061b7d68e5fb" width="300">
+
+<br/>
+
 
 With an interface, you remove the circular dependency at compile time, but not at runtime. The cognitive load required to understand the code doesn’t become any smaller.
 
-Chapter 8. Why Integration testing? 
+<br/>
+<br/>
+
+### Chapter 8. Why Integration testing? 
+
+ <br/>
  
 
 최대한 비즈니스 로직은 단위테스트로 커버쳐야한다. 단위테스트로 검증하기 힘든 엣지케이스들을 한방에 통합테스트로 검사해야한다.
@@ -698,40 +715,60 @@ Chapter 8. Why Integration testing?
 
 순환 의존성을 끊고싶을 때도 인터페이스를 두는 것이 좋다.
 
-Chapter 9.  Mocking best practices 주요 문장
+<br/>
+<br/>
+<br/>
 
+#
+
+### Chapter 9.  Mocking best practices 주요 문장
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/eff83815-8ea8-4a77-b994-ff02bc2ce930" width="300">
  
+<br/>
 
-IBus resides at the system’s edge; IMessageBus is only an intermediate link in the chain of types between the controller and the message bus. Mocking IBus instead of IMessageBusachieves the best protection against regressions.
+>IBus resides at the system’s edge; IMessageBus is only an intermediate link in the chain of types between the controller and the message bus. Mocking IBus instead of IMessageBusachieves the best protection against regressions.
 
+<br/>
 
-mocking is the only legitimate reason to have such interfaces
+>mocking is the only legitimate reason to have such interfaces
 
- 
+<br/>
 
-spy is a variation of a test double that serves the same purpose as a mock. The only difference is that spies are written manually, whereas mocks are created with the help of a mocking framework. Indeed, spies are often called handwritten mocks.
+>spy is a variation of a test double that serves the same purpose as a mock. The only difference is that spies are written manually, whereas mocks are created with the help of a mocking framework. Indeed, spies are often called handwritten mocks.
 
+<br/>
 
-It turns out that, when it comes to classes residing at the system edges, spies are superior to mocks. Spies help you reuse code in the assertion phase, thereby reducing the test’s size and improving readability. 
+>It turns out that, when it comes to classes residing at the system edges, spies are superior to mocks. Spies help you reuse code in the assertion phase, thereby reducing the test’s size and improving readability. 
 
- 
+<br/>
 
-Your code should either communicate with out-of-process dependencies or be complex, but never both. This principle naturally leads to the formation of two distinct layers: the domain model (that handles complexity) and controllers (that handle the communication).
+>Your code should either communicate with out-of-process dependencies or be complex, but never both. This principle naturally leads to the formation of two distinct layers: the domain model (that handles complexity) and controllers (that handle the communication).
 
+<br/>
 
-On the contrary: the term unit means a unit of behavior, not a unit of code. The amount of code it takes to implement such a unit of behavior is irrelevant. It could span across multiple classes, a single class, or take up just a tiny method.
+>On the contrary: the term unit means a unit of behavior, not a unit of code. The amount of code it takes to implement such a unit of behavior is irrelevant. It could span across multiple classes, a single class, or take up just a tiny method.
 
+<br/>
 
-Abstract the underlying library’s complexity
-Only expose features you need from the library
-Do that using your project’s domain language
-As I explained previously, mocks are for unmanaged dependencies only. Thus, there’s no need to abstract in-memory or managed dependencies. For instance, if a library provides a date and time API, you can use that API as-is, because it doesn’t reach out to unmanaged dependencies
+>Abstract the underlying library’s complexity
+>Only expose features you need from the library
+>Do that using your project’s domain language
+>As I explained previously, mocks are for unmanaged dependencies only. Thus, there’s no need to abstract in-memory or managed >dependencies. For instance, if a library provides a date and time API, you can use that API as-is, because it doesn’t reach >out to unmanaged dependencies
 
- 
+ <br/>
 
-Don’t rely on production code when making assertions. Use a separate set of literals and constants in tests. Duplicate those literals and constants from the production code if necessary. Tests should provide a checkpoint independent of the production code.
+>Don’t rely on production code when making assertions. Use a separate set of literals and constants in tests. Duplicate those literals and constants from the production code if necessary. Tests should provide a checkpoint independent of the production code.
 
-Chapter 9.  Mocking best practices 나의 생각
+<br/>
+<br/>
+
+### Chapter 9.  Mocking best practices 나의 생각
+
+<br/>
+
 단위테스트에서 모킹이 사용되서는 안된다. 오직 통합테스트와 end -to-end 테스트에서 사용한다.
 
  
@@ -754,29 +791,44 @@ Chapter 9.  Mocking best practices 나의 생각
 
  
 
- 
+<br/>
+<br/>
+<br/>
 
-Chapter 10.  Testing the database 주요문장
-Keeping the database in the source control system
+#
+
+### Chapter 10.  Testing the database 주요문장
+
+<br/>
+
+>Keeping the database in the source control system
 Using a separate database instance for every developer
 Applying the migration-based approach to database delivery
- 
-
 No single source of truth— The model database becomes a competing source of truth about the state of development. Maintaining two such sources (Git and the model database) creates an additional burden.
 
+<br/>
 
-The state-based approach makes the state explicit and migrations implicit; the migration-based approach makes the opposite choice.
+<img src="https://github.com/user-attachments/assets/491dc2d6-33e2-4f5a-bb82-f714e2493418" width="300">
 
+<br/>
+
+>The state-based approach makes the state explicit and migrations implicit; the migration-based approach makes the opposite choice.
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/b46486c0-f02d-4b88-8231-ea2ccb163103" width="300">
+
+<br/>
  
 
+>Wrapping each database call into a separate transaction introduces a risk of inconsistencies due to hardware or software failures
 
-Wrapping each database call into a separate transaction introduces a risk of inconsistencies due to hardware or software failures
-
+<br/>
  
+>The transaction mediates interactions between the controller and the database and thus enables atomic data modification.
 
-The transaction mediates interactions between the controller and the database and thus enables atomic data modification.
 
-
+<br/>
 
 The main advantage of a unit of work over a plain transaction is the deferral of updates. Unlike a transaction, a unit of work executes all updates at the end of the business operation, thus minimizing the duration of the underlying database transaction and reducing data congestion.
 
