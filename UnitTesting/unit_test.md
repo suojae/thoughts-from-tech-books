@@ -581,6 +581,254 @@ Unfortunately, you can’t use the output-based testing style everywhere. It’s
 특히 이번챕터를 통해 모바일 프레젠테이션 레이어 패턴으로 자주 사용되는 MVC/MVP 가 humble object 패턴으로부터 비롯된 것임을 알 수 있었다. 결국 자주 변하는 것과 변하지 않는 것을 분리하고 변하지 않는 것은 최대한 "함수형"으로 작성함으로써 테스트에 더 적합한 코드를 작성할 수 있다.
 
 
+<br/>
+<br/>
+<br/>
+
+#
+
+### Chapter 8. Why Integration testing? 주요 문장
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/1d00edd0-ab3a-4b7c-a6db-5b14edee20c8" width="300">
+
+<br/>
+
+>Integration tests cover controllers, while unit tests cover the domain model and algorithms. 
+
+<br/>
+
+
+>integration tests go through a larger amount of code (both your code and the code of the libraries used by the application), which makes them better than unit tests at protecting against regressions. They are also more detached from the production code and therefore have better resistance to refactoring.
+
+<br/>
+
+>check as many of the business scenario’s edge cases as possible with unit tests; use integration tests to cover one happy path, as well as any edge cases that can’t be covered by unit tests
+
+<br/>
+
+<img src="https://github.com/user-attachments/assets/76d81b01-ebff-4fac-99f1-ba1d5cbeafd2" width="300">
+
+<br/>
+
+>Fast, cheap unit tests cover the majority of edge cases, while a smaller number of slow, more expensive integration tests ensure the correctness of the system as a whole.
+
+<br/>
+
+>The sooner you detect a bug, the easier it is to fix. A bug that is already in production is orders of magnitude more expensive to fix compared to a bug found during development.
+
+<br>
+
+<img src="https://github.com/user-attachments/assets/4ff2634d-3a4e-4df9-8222-5b9b2b19c01a" width="300">
+
+<br/>
+
+>Communications with managed dependencies are implementation details; use such dependencies as-is in integration tests. Communications with unmanaged dependencies are part of your system’s observable behavior. Such dependencies should be mocked out.
+
+<br/>
+
+>Use real instances of managed dependencies; replace unmanaged dependencies with mocks.
+
+<br/>
+
+>Using real instances of managed dependencies in integration tests helps you verify that final state from the external client’s point of view.
+
+ <br/>
+
+>Treat the part of the database that is visible to external applications as an unmanaged dependency. Replace it with mocks in integration tests. Treat the rest of the database as a managed dependency. Verify its final state, not interactions with it.
+
+<br/>
+
+>Integration tests host the application within the same process. Unlike end-to-end tests, integration tests substitute unmanaged dependencies with mocks. The only out-of-process components for integration tests are managed dependencies.
+
+<br/>
+
+>One of the most misunderstood subjects in the sphere of unit testing is the use of interfaces. Developers often ascribe invalid reasons to why they introduce interfaces and, as a result, tend to overuse them.
+
+ 
+
+Abstract out-of-process dependencies, thus achieving loose coupling
+Add new functionality without changing the existing code, thus adhering to the Open-Closed principle (OCP)
+Both of these reasons are misconceptions. Interfaces with a single implementation are not abstractions and don’t provide loose coupling any more than concrete classes that implement those interfaces
+
+ 
+
+Genuine abstractions are discovered, not invented. The discovery, by definition, takes place post factum, when the abstraction already exists but is not yet clearly defined in the code
+
+ 
+
+So, why use interfaces for out-of-process dependencies at all, assuming that each of those interfaces has only one implementation? The real reason is much more practical and down-to-earth. It’s to enable mocking—as simple as that. 
+
+ 
+
+You only mock out unmanaged dependencies, so the guideline can be boiled down to this: use interfaces for unmanaged dependencies only. 
+
+ 
+
+Circular dependencies also interfere with testing. You often have to resort to interfaces and mocking in order to split the class graph and isolate a single unit of behavior, which, again, is a no-go when it comes to testing the domain model
+
+ 
+
+
+ 
+
+With an interface, you remove the circular dependency at compile time, but not at runtime. The cognitive load required to understand the code doesn’t become any smaller.
+
+Chapter 8. Why Integration testing? 
+ 
+
+최대한 비즈니스 로직은 단위테스트로 커버쳐야한다. 단위테스트로 검증하기 힘든 엣지케이스들을 한방에 통합테스트로 검사해야한다.
+
+ 
+
+에러가 있으면 최대한 빨리 잡아내야한다. 그렇지 않으면 나중에 이런 에러가 중첩되어서 더이상 건들 수 없는 코드가 되어버린다.
+
+ 
+
+인터페이스를 만드는 기준은 모킹을 해야하느냐 말아야하느냐 -> 외부 의존성 관리이냐 아니냐로 귀결
+
+ 
+
+인터페이스를 두면 자연스럽게 계층이 늘어나진다 그리고 늘어난 계층만큼 코드의 복잡성은 증가한다. 적절한 추상화가 필요하다.
+
+ 
+
+ 
+
+순환 의존성을 끊고싶을 때도 인터페이스를 두는 것이 좋다.
+
+Chapter 9.  Mocking best practices 주요 문장
+
+ 
+
+IBus resides at the system’s edge; IMessageBus is only an intermediate link in the chain of types between the controller and the message bus. Mocking IBus instead of IMessageBusachieves the best protection against regressions.
+
+
+mocking is the only legitimate reason to have such interfaces
+
+ 
+
+spy is a variation of a test double that serves the same purpose as a mock. The only difference is that spies are written manually, whereas mocks are created with the help of a mocking framework. Indeed, spies are often called handwritten mocks.
+
+
+It turns out that, when it comes to classes residing at the system edges, spies are superior to mocks. Spies help you reuse code in the assertion phase, thereby reducing the test’s size and improving readability. 
+
+ 
+
+Your code should either communicate with out-of-process dependencies or be complex, but never both. This principle naturally leads to the formation of two distinct layers: the domain model (that handles complexity) and controllers (that handle the communication).
+
+
+On the contrary: the term unit means a unit of behavior, not a unit of code. The amount of code it takes to implement such a unit of behavior is irrelevant. It could span across multiple classes, a single class, or take up just a tiny method.
+
+
+Abstract the underlying library’s complexity
+Only expose features you need from the library
+Do that using your project’s domain language
+As I explained previously, mocks are for unmanaged dependencies only. Thus, there’s no need to abstract in-memory or managed dependencies. For instance, if a library provides a date and time API, you can use that API as-is, because it doesn’t reach out to unmanaged dependencies
+
+ 
+
+Don’t rely on production code when making assertions. Use a separate set of literals and constants in tests. Duplicate those literals and constants from the production code if necessary. Tests should provide a checkpoint independent of the production code.
+
+Chapter 9.  Mocking best practices 나의 생각
+단위테스트에서 모킹이 사용되서는 안된다. 오직 통합테스트와 end -to-end 테스트에서 사용한다.
+
+ 
+
+유닛테스트라고 하나의 sut만 두고 테스트한다는 것은 잘못된 생각이다. 유닛테스트는 하나의 "행동"을 테스트하는 것이 핵심이다.
+
+ 
+
+유닛 테스트는 단일 기능적 행동을 검증하는 데 초점을 맞추며, 다른 클래스나 모듈이 관여하더라도 그 행동이 잘 수행되는지를 격리된 환경에서 확인만 하면 된다.
+
+ 
+
+ 
+
+유닛테스트의 핵심은 단일 기능(행동)과 격리된 환경이다.
+
+ 
+
+테스트 코드 쓴다면 프로덕션의 assert는 안쓰는 것이 좋다. 중복된 검증은 불필요한 코드이다.
+
+ 
+
+ 
+
+Chapter 10.  Testing the database 주요문장
+Keeping the database in the source control system
+Using a separate database instance for every developer
+Applying the migration-based approach to database delivery
+ 
+
+No single source of truth— The model database becomes a competing source of truth about the state of development. Maintaining two such sources (Git and the model database) creates an additional burden.
+
+
+The state-based approach makes the state explicit and migrations implicit; the migration-based approach makes the opposite choice.
+
+ 
+
+
+Wrapping each database call into a separate transaction introduces a risk of inconsistencies due to hardware or software failures
+
+ 
+
+The transaction mediates interactions between the controller and the database and thus enables atomic data modification.
+
+
+
+The main advantage of a unit of work over a plain transaction is the deferral of updates. Unlike a transaction, a unit of work executes all updates at the end of the business operation, thus minimizing the duration of the underlying database transaction and reducing data congestion.
+
+ 
+
+Database transactions also implement the unit-of-work pattern
+
+ 
+
+ 
+
+Because there are hardly any abstraction layers in reads (the domain model is one such layer), unit tests aren’t of any use there. If you decide to test your reads, do so using integration tests on a real database.
+
+
+
+Repositories exhibit little complexity and communicate with the out-of-process dependency, thus falling into the controllers quadrant on the types-of-code diagram.
+
+ 
+
+ 
+
+Chapter 10.  Testing the database 나의 생각
+ 
+
+데이터 베이스와 컨트롤러가 트랜섹션을 할 때 뭉탱이로 할게 아니라 데이터 별로 분리해놔야 일관성 유지에 용이해진다.
+
+ 
+
+데이터를 묶어서 유닛단위로 처리해버리면 데이터 혼잡을 줄일 수 있다는 장점이 있다.
+
+ 
+
+Object Mother와 Test Data Builder는 테스트에서 사용할 더미 데이터(dummy data) 또는 테스트 데이터를 생성하는 패턴으로 이해할 수 있습니다
+
+ 
+
+Object Mother는 기본값을 가진 객체 생성 메서드를 제공하며, 단순하고 빠르게 기본 객체를 생성하는 데 유리합니다.
+Test Data Builder는 플루언트 인터페이스를 통해 객체의 속성을 단계적으로 설정할 수 있으며, 복잡한 객체를 생성하는 데 적합합니다.
+ 
+
+Chapter 11. Unit testing anti patterns 주요 문장
+
+ 
+
+How to test the algorithm properly, then? Don’t imply any specific implementation when writing tests. Instead of duplicating the algorithm, hard-code its results into the test, as shown in the following listing
+
+ 
+
+The problem with code pollution is that it mixes up test and production code and thereby increases the maintenance costs of the latter. To avoid this anti-pattern, keep the test code out of the production code base.
+
+
+The ambient context pollutes the production code and makes testing more difficult
 
 
 
