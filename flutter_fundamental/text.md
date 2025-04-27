@@ -70,11 +70,24 @@ void listenTo(Listenable listenable) {
 
 ### 2. Unveiling FLutter: Architecture and Engineering Insights
 
+> In Flutter's architecture, a `Widget is an immutable configuration, while the `Element` is the dynamic entity that gets mounted.
+
+<br/>
+
+> In Flutter, every widget receives a set of constraints define the widget's minimum allowable sizes. 
+
+<br/>
+
+> Once a widget receives its constraints, it determines its size within these limits. This isze is then comunicated u[wards to the parent.
+
+<br/>
+
+> Each widget is laid out only once, and the process cannot be reversed or iterated. 
+
+
+<br/>
+
 >
-
-
-
-
 
 
 
