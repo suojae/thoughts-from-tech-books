@@ -13,6 +13,7 @@
 ### Color
 
 <img width="250" alt="image" src="https://github.com/user-attachments/assets/d2fd52f8-3e6f-402c-9ce8-bf3921cc2fcc" />
+<img width="300"  alt="image" src="https://github.com/user-attachments/assets/4cd44ee2-3a61-4df1-b175-4fed3e2348f7" />
 
 <br/>
 
