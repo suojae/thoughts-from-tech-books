@@ -30,4 +30,16 @@
 
 <br/>
 
-### 
+### Scene
+
+#### Scene이란?
+<img width="250" alt="image" src="https://github.com/user-attachments/assets/1690e011-e02c-4690-82eb-4c6ce8d47f53" />
+
+<br/>
+
+- Scene은 렌더링(Rendering), 즉 화면에 그리고자 하는 모든 3D 객체들의 집합을 의미한다.
+- '캔버스'가 그림을 그릴 도화지였다면, '장면'은 그 도화지에 그려질 내용물, 즉 3D 세상 그 자체이다.
+- 따라서 캔버스는 2D(x, y) 공간이지만, Scene은 3D(x, y, z) 공간이다. -> 별도의 좌표계
+- 캔버스는 화면의 점인 **픽셀(pixel)** 을 단위로 사용하지만, Scene은 **실세계의 단위(미터, 인치 등)** 를 사용한다.
+
+
