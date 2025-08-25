@@ -8,4 +8,4 @@
 | **Category Theory for Programmers** | Bartosz Milewski |완독 | [01~08 챕터 정리](https://github.com/ssuojae/thoughts-from-tech-books/blob/main/category_theory/01~07.md) |
 | **Designing Data-Intensive Applications** | Martin Kleppmann | 3개 챕터 | [01~03 챕터 정리](https://github.com/ssuojae/thoughts-from-tech-books/blob/main/data-intensive-app/01.md) |
 | **Structure and Interpretation of Computer Programs: JavaScript Edition** | Harold Abelson, Gerald Jay Sussman | 2개 챕터 | [01. Building Abstraction with Functions](https://github.com/ssuojae/thoughts-from-tech-books/blob/main/SICP/01.md)<br/>[02. Building Abstractions with Data](https://github.com/ssuojae/thoughts-from-tech-books/blob/main/SICP/02.md) |
-| **Computer Graphics from Scratch** | Gabriel Gambetta | 1개 챕터 | [01. INTRODUCTORY CONCEPTS]( )|
+| **Computer Graphics from Scratch** | Gabriel Gambetta | 1개 챕터 | [01. INTRODUCTORY CONCEPTS](https://github.com/suojae/thoughts-from-tech-books/blob/main/graphic/introductory_concepts.md)|
